@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5的storage</title>
+</head>
+<body>
+    <input type='button' onclick='setItems()' value='存值'　/>
+    <input type='button' onclick='getItems()' value='取值'　/>
+    <input type='button' onclick='deleteItem()' value='删除'　/>
+    <div id="b1"></div>
+    <div id="b2"></div>
+    <div id="b3"></div>
+</body>
+<script>
+    //localStorage存值永久有效
+    function setItems(){
+        var user = {};
+        user.name = 'Adam Li';
+        user.age  = 25;
+        user.home = 'China';
+        localStorage.setItem('userinfo',JSON.stringify(user));
+         console.log(localStorage.setItem('userinfo', JSON.stringify(user)));
+         document.getElementById("b1").innerHTML= localStorage.setItem('userinfo', JSON.stringify(user))
+    }
+    //localStorage取值
+    function getItems(){
+        var data = JSON.parse(localStorage.getItem('userinfo'));
+        console.log("name:"+data.name+'\r age:'+data.age+"\r home:"+data.home);
+         console.log(data);
+    }
+
+    //localStorage删除指定键对应的值
+    function deleteItem(){
+        localStorage.removeItem('userinfo');
+        console.log(localStorage.getItem('userinfo'));
+    }
+</script>
+</html>
